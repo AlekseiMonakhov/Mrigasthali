@@ -1,0 +1,24 @@
+.reviewContainer {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  @media (max-width: 991px) {
+    margin-top: 10px;
+  }
+
+  @media (min-width: 992px) {
+    width: 100%;
+    margin-left: 150px;
+    overflow: visible;
+    gap: 23px;
+  }
+}
+
+.slideWrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  align-items: center;
+  margin-left: 6px;
+}
