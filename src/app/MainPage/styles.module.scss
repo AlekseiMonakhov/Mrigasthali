@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Tangak';
+  src: url('/fonts/tangak.ttf') format('truetype'),
+       url('/fonts/tangak.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .page {
-  color: var(--color-total-white);
+  font-family: 'Tangak', sans-serif;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;

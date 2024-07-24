@@ -1,11 +1,18 @@
+@font-face {
+  font-family: 'Tangak';
+  src: url('/fonts/tangak.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .fullscreenVideo {
   width: 100%;
-  height: 100vh;
+  height: 97vh;
   overflow: hidden;
   margin-bottom: 4px;
   border-radius: 10px;
   padding: 4px;
-  position: relative; // Added for positioning overlay and image
+  position: relative;
 
   @media (max-width: 991px) {
     padding: 2px;
@@ -36,15 +43,6 @@
     }
   }
 
-  .backgroundPhoto {
-    position: absolute; // Positioning for background
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; // Ensures image covers entire container
-    z-index: 0; // Make sure image is under overlay
-  }
 }
 
 .homeTitle {
@@ -55,8 +53,8 @@
   left: 50%;
   top: 47%;
   transform: translate(-50%, -50%);
+  font-family: Tangak, sans-serif;
   color: #fff;
-  font-family: 'Suisse Intl', sans-serif;
   font-size: 35px;
   font-weight: 400;
   line-height: 110%;
@@ -65,10 +63,12 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  letter-spacing: 4px; 
 
   @media (min-width: 992px) {
     width: calc(100% - 600px);
     font-size: 80px;
     top: 43%;
+    letter-spacing: 4px; 
   }
 }

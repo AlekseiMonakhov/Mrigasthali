@@ -4,12 +4,11 @@ import FullScreenVideo from './components/FullScreenVideo';
 import Gallery from './components/Gallery';
 import Title from './components/Title';
 import Swiper from './components/Swiper';
-import {Footer} from "@/app/MainPage/components/Footer";
 
 const MainPage: FC = () => {
 
   const [mainTitle, setMainTitle] = useState('MRIGASTHALI');
-  const [galleryTitle, setGalleryTitle] = useState('Some text we put here');
+  const [galleryTitle, setGalleryTitle] = useState('Gorakhnath Math');
   const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
   const [reviewTitle, setReviewTitle] = useState('Some text we put here');
   const [callbackFormTitle, setCallbackFormTitle] = useState('Some text we put here');
@@ -18,12 +17,10 @@ const MainPage: FC = () => {
   const [propertiesVisionTitle, setPropertiesVisionTitle] = useState('');
   const [gallery, setGallery] = useState({
     items: [
-      { src: require('../MainPage/assets/images/m10.png').default, title: 'Image 1 Title', subtitle: 'Image 1 Subtitle' },
-      { src: require('../MainPage/assets/images/m3.png').default, title: 'Image 2 Title', subtitle: 'Image 2 Subtitle' },
-      { src: require('../MainPage/assets/images/m4.png').default, title: 'Image 3 Title', subtitle: 'Image 3 Subtitle' },
-      { src: require('../MainPage/assets/images/m5.png').default, title: 'Image 4 Title', subtitle: 'Image 4 Subtitle' },
-      { src: require('../MainPage/assets/images/m6.png').default, title: 'Image 5 Title', subtitle: 'Image 5 Subtitle' },
-      { src: require('../MainPage/assets/images/m7.png').default, title: 'Image 6 Title', subtitle: 'Image 6 Subtitle' }
+      { src: require('../MainPage/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
+      { src: require('../MainPage/assets/images/m26.png').default, title: 'Gorakshya Peeth Mrigasthali', subtitle: `is located inbetween Pashupatinath at North, Guheshwori at south and Gauri-Ghat at West. It is surrounded at its three sides by Bagmati river.` },
+      { src: require('../MainPage/assets/images/Gorakh-1.webp').default, title: 'Guru Gorakhnath', subtitle: ' is the incarnation of lord Shiva. He is also known as Shiva Gorakshya. He is the Yoga form of Lord Shiva.' },
+      { src: require('../MainPage/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
     ]
   });
   const [swiperItems, setSwiperItems] = useState([
@@ -75,7 +72,6 @@ const MainPage: FC = () => {
         extended
         wide
       />
-      <Footer theme="light" />
     </div>
   );
 };
