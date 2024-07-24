@@ -9,14 +9,14 @@ const nextConfig = {
     config.resolve.alias['@'] = path.resolve(__dirname);
     config.resolve.alias['~'] = path.resolve(__dirname, 'node_modules');
 
-    // Добавьте правило для обработки mp4 файлов
     config.module.rules.push({
-      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,
+      test: /\.(mp4|webm)$/,
       use: {
         loader: 'file-loader',
         options: {
+          publicPath: '/_next/static/videos/',
+          outputPath: 'static/videos/',
           name: '[name].[hash].[ext]',
-          outputPath: 'public/videos/', // Папка для сохранения видео
         },
       },
     });
