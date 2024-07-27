@@ -6,6 +6,9 @@ import Title from '../../components/Title';
 import Swiper from '../../components/Swiper';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Image from 'next/image';
+import BankQR from '../../../public/assets/qr/bank-qr.jpg';
+
 
 const MainPage: FC = () => {
 
@@ -13,10 +16,9 @@ const MainPage: FC = () => {
   const [galleryTitle, setGalleryTitle] = useState('Gorakhnath Math');
   const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
   const [reviewTitle, setReviewTitle] = useState('Some text we put here');
-  const [callbackFormTitle, setCallbackFormTitle] = useState('Some text we put here');
-  const [callbackFormSubtitle, setCallbackFormSubtitle] = useState('Some text we put here');
+  const [donationFormTitle, setdonationFormTitle] = useState('Donation');
+  const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
   const [propertiesTitle, setPropertiesTitle] = useState('Some text we put here');
-  const [propertiesVisionTitle, setPropertiesVisionTitle] = useState('');
   const [gallery, setGallery] = useState({
     items: [
       { src: require('../MainPage/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
@@ -65,19 +67,16 @@ const MainPage: FC = () => {
         <Gallery items={gallery.items} />
         <Title mainTitle={swiperTitle} extended />
         <Swiper properties={swiperItems} />
-      
         <Title
-          extended
-          mainTitle={propertiesTitle}
-          visionTitle={propertiesVisionTitle}
-        />
-        <Title mainTitle={reviewTitle} extended wide />
-        <Title
-          mainTitle={callbackFormTitle}
-          subtitle={callbackFormSubtitle}
+          mainTitle={donationFormTitle}
+          subtitle={donationFormSubtitle}
           extended
           wide
         />
+        <div className={styles.donation}>
+        <Image src={BankQR} alt="Donation" width={300} height={350} />
+        </div>
+        
       </div>
       <Footer />
     </>

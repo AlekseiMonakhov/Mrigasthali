@@ -10,6 +10,10 @@
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 991px) {
+    height: 120px;
+  }
 }
 
 .footerSection {
@@ -26,6 +30,7 @@
     font-size: 14px;
     line-height: 1.5;
   }
+  
 }
 
 .socialIcons {
@@ -38,10 +43,15 @@
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid #ddd;
+  height: 20px;
 
   p {
     font-size: 12px;
     color: #666;
+  }
+
+  @media (max-width: 991px) {
+    height: 10px;
   }
 }
 
