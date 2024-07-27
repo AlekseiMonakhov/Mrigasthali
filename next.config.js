@@ -14,13 +14,13 @@ const nextConfig = {
     }
     
     config.module.rules.push({
-      test: /\.tsx?$/,
+      test: /\.(ts|tsx)$/,
       use: [
         {
           loader: 'babel-loader',
           options: {
             presets: ['next/babel'],
-            plugins: ['@babel/plugin-syntax-dynamic-import'],
+            plugins: ['@babel/plugin-transform-runtime'],
           },
         },
       ],
