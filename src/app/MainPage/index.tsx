@@ -4,6 +4,8 @@ import FullScreenVideo from './components/FullScreenVideo';
 import Gallery from './components/Gallery';
 import Title from './components/Title';
 import Swiper from './components/Swiper';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const MainPage: FC = () => {
 
@@ -55,24 +57,30 @@ const MainPage: FC = () => {
 
 
   return (
-    <div className={styles.page}>
-      <FullScreenVideo mainTitle={mainTitle} />
-      <Title mainTitle={galleryTitle} />
-      <Gallery items={gallery.items} />
-      <Title mainTitle={swiperTitle} extended />
-      <Swiper properties={swiperItems} /><Title
-        extended
-        mainTitle={propertiesTitle}
-        visionTitle={propertiesVisionTitle}
-      />
-      <Title mainTitle={reviewTitle} extended wide />
-      <Title
-        mainTitle={callbackFormTitle}
-        subtitle={callbackFormSubtitle}
-        extended
-        wide
-      />
-    </div>
+    <>
+      <Header />
+      <div className={styles.page}>
+        <FullScreenVideo mainTitle={mainTitle} />
+        <Title mainTitle={galleryTitle} />
+        <Gallery items={gallery.items} />
+        <Title mainTitle={swiperTitle} extended />
+        <Swiper properties={swiperItems} />
+      
+        <Title
+          extended
+          mainTitle={propertiesTitle}
+          visionTitle={propertiesVisionTitle}
+        />
+        <Title mainTitle={reviewTitle} extended wide />
+        <Title
+          mainTitle={callbackFormTitle}
+          subtitle={callbackFormSubtitle}
+          extended
+          wide
+        />
+      </div>
+      <Footer />
+    </>
   );
 };
 
