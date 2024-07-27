@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import FullScreenVideo from './components/FullScreenVideo';
-import Gallery from './components/Gallery';
-import Title from './components/Title';
-import Swiper from './components/Swiper';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import FullScreenVideo from '../../components/FullScreenVideo';
+import Gallery from '../../components/Gallery';
+import Title from '../../components/Title';
+import Swiper from '../../components/Swiper';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const MainPage: FC = () => {
 
