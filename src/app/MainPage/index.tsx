@@ -8,17 +8,14 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import BankQR from '../../../public/assets/qr/bank-qr.jpg';
-
+import { useImages } from '../../hooks/useImages';
 
 const MainPage: FC = () => {
-
   const [mainTitle, setMainTitle] = useState('MRIGASTHALI');
   const [galleryTitle, setGalleryTitle] = useState('Gorakhnath Math');
   const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
-  const [reviewTitle, setReviewTitle] = useState('Some text we put here');
   const [donationFormTitle, setdonationFormTitle] = useState('Donation');
   const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
-  const [propertiesTitle, setPropertiesTitle] = useState('Some text we put here');
   const [gallery, setGallery] = useState({
     items: [
       { src: require('../MainPage/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
@@ -27,36 +24,7 @@ const MainPage: FC = () => {
       { src: require('../MainPage/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
     ]
   });
-  const [swiperItems, setSwiperItems] = useState([
-    { src: require('../MainPage/assets/yatra/1.png').default, alt: 'Swiper Image 1', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/2.png').default, alt: 'Swiper Image 2', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/3.png').default, alt: 'Swiper Image 3', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/4.png').default, alt: 'Swiper Image 4', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/5.png').default, alt: 'Swiper Image 5', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/6.png').default, alt: 'Swiper Image 6', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/7.png').default, alt: 'Swiper Image 7', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/8.png').default, alt: 'Swiper Image 8', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/9.png').default, alt: 'Swiper Image 9', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/10.png').default, alt: 'Swiper Image 10', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/11.png').default, alt: 'Swiper Image 11', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/12.png').default, alt: 'Swiper Image 12', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/13.png').default, alt: 'Swiper Image 13', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/14.png').default, alt: 'Swiper Image 14', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/15.png').default, alt: 'Swiper Image 15', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/16.png').default, alt: 'Swiper Image 16', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/17.png').default, alt: 'Swiper Image 17', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/18.png').default, alt: 'Swiper Image 18', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/19.png').default, alt: 'Swiper Image 19', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/20.png').default, alt: 'Swiper Image 20', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/21.png').default, alt: 'Swiper Image 21', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/22.png').default, alt: 'Swiper Image 22', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/23.png').default, alt: 'Swiper Image 23', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/24.png').default, alt: 'Swiper Image 24', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/25.png').default, alt: 'Swiper Image 25', title: 'Yatra 2024' },
-    { src: require('../MainPage/assets/yatra/26.png').default, alt: 'Swiper Image 26', title: 'Yatra 2024' },
-  ]);
-
-
+  const { images: swiperItems, loading, error } = useImages('yatra');
 
   return (
     <>
@@ -66,7 +34,16 @@ const MainPage: FC = () => {
         <Title mainTitle={galleryTitle} />
         <Gallery items={gallery.items} />
         <Title mainTitle={swiperTitle} extended />
-        <Swiper properties={swiperItems} />
+        {loading ? (
+          <div>Загрузка изображений...</div>
+        ) : error ? (
+          <div>
+            <p>Произошла ошибка при загрузке изображений для свайпера.</p>
+            <Swiper properties={[]} />
+          </div>
+        ) : (
+          <Swiper properties={swiperItems} />
+        )}
         <Title
           mainTitle={donationFormTitle}
           subtitle={donationFormSubtitle}
@@ -74,9 +51,8 @@ const MainPage: FC = () => {
           wide
         />
         <div className={styles.donation}>
-        <Image src={BankQR} alt="Donation" width={300} height={350} />
+          <Image src={BankQR} alt="Donation" width={300} height={350} />
         </div>
-        
       </div>
       <Footer />
     </>

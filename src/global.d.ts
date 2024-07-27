@@ -18,6 +18,23 @@ declare module '*.mp4' {
   export default src;
 }
 
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.svg'
+declare module '*.gif'
+
+interface NodeRequire {
+  context: (
+    directory: string,
+    useSubdirectories: boolean,
+    regExp: RegExp
+  ) => {
+    keys(): string[];
+    <T>(id: string): T;
+  };
+}
+
 declare module '*.png' {
   const value: any;
   export = value;

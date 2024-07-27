@@ -12,6 +12,20 @@ const nextConfig = {
         fs: false,
       };
     }
+    
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['next/babel'],
+            plugins: ['@babel/plugin-syntax-dynamic-import'],
+          },
+        },
+      ],
+    });
+
     return config;
   },
 };
