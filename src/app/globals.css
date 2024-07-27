@@ -7,7 +7,6 @@
 
 html,
 body {
-  background-color: orange !important;
   margin: 0 !important;
   padding: 0 !important;
   min-height: 100vh;
@@ -18,10 +17,6 @@ body {
 
 
 #root {
-  background-color: orange !important;
   min-height: 100vh;
 }
 
-:root {
-  background-color: orange !important;
-}
