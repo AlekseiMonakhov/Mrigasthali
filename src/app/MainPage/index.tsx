@@ -10,6 +10,8 @@ import Image from 'next/image';
 import BankQR from '../../../public/assets/qr/bank-qr.jpg';
 import { useImages } from '../../hooks/useImages';
 
+import '../globals.scss'; 
+
 const MainPage: FC = () => {
   const [mainTitle, setMainTitle] = useState('MRIGASTHALI');
   const [galleryTitle, setGalleryTitle] = useState('Gorakhnath Math');

@@ -11,12 +11,32 @@ body {
   padding: 0 !important;
   min-height: 100vh;
   width: 100%;
+  min-width: 100%;
+  overflow-x: hidden;
   box-sizing: border-box;
   font-family: 'Tangak', sans-serif;
 }
 
+body {
+  position: relative;
+}
 
 #root {
   min-height: 100vh;
+  width: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 415px) {
+  html,
+  body,
+  #root,
+  .page {
+    width: 100vw;
+    min-width: 100vw;
+    overflow-x: hidden;
+  }
+}

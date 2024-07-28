@@ -3,7 +3,7 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles'), 'node_modules'],
+    includePaths: [path.join(__dirname, 'src', 'app'), 'node_modules'],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -17,6 +17,7 @@ const nextConfig = {
   experimental: {
     forceSwcTransforms: true,
   },
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
