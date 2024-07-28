@@ -12,21 +12,10 @@ const nextConfig = {
         fs: false,
       };
     }
-    
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: 'babel-loader',
-          options: {
-            presets: ['next/babel'],
-            plugins: ['@babel/plugin-transform-runtime'],
-          },
-        },
-      ],
-    });
-
     return config;
+  },
+  experimental: {
+    forceSwcTransforms: true,
   },
 };
 
