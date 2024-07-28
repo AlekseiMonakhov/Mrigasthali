@@ -9,8 +9,8 @@ const Footer: React.FC = () => {
       <div className={styles.footerContent}>
         <div className={styles.footerSection}>
           <h3>Contact</h3>
-          <p>Email: info@mrigasthali.com</p>
-          <p>Phone: +1 234 567 890</p>
+          <p>Email: siddhachal.mrigasthali@gmail.com</p>
+          <p>Phone: +977 985-1027163</p>
         </div>
         <div className={styles.footerSection}>
           <h3>Social media</h3>
