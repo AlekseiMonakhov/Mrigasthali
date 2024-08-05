@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import FullScreenVideo from '../../components/FullScreenVideo';
-import Gallery from '../../components/Gallery';
+import GalleryWithCards from '../../components/GalleryWithCards';
 import Title from '../../components/Title';
 import Swiper from '../../components/Swiper';
 import Header from '../../components/Header';
@@ -11,14 +11,25 @@ import BankQR from '../../../public/assets/qr/bank-qr.jpg';
 import { useImages } from '../../hooks/useImages';
 
 import '../globals.scss'; 
+import Gallery from '@/components/Gallery ';
 
 const MainPage: FC = () => {
   const [mainTitle, setMainTitle] = useState('MRIGASTHALI');
-  const [galleryTitle, setGalleryTitle] = useState('Gorakhnath Math');
-  const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
-  const [donationFormTitle, setdonationFormTitle] = useState('Donation');
-  const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
-  const [gallery, setGallery] = useState({
+  
+  const [mainPageVideoSrc, setMainPageVideoSrc] = useState('/assets/videos/video-back.mp4');
+  const [galleryTitle, setGalleryTitle] = useState('Om Shiv Gorakh');
+  const [galleryItems, setGalleryItems] = useState ({
+    items: [
+      { src: require('../../../public/assets/Gorakshanath/FB_IMG_17221779561109411.jpg').default},
+      { src: require('../../../public/assets/Gorakshanath/IMG_0006.jpg').default},
+      { src: require('../../../public/assets/Gorakshanath/FB_IMG_17216324868483889.jpg').default},
+     
+     
+    ]
+  })
+ 
+  const [galleryWithCardTitle, setGalleryWithCardTitle] = useState('Siddhachal Mrigasthali Ashram');
+  const [galleryWithCardsItems, setGalleryWithCardsItems] = useState({
     items: [
       { src: require('../MainPage/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
       { src: require('../MainPage/assets/images/m26.png').default, title: 'Gorakshya Peeth Mrigasthali', subtitle: `is located inbetween Pashupatinath at North, Guheshwori at south and Gauri-Ghat at West. It is surrounded at its three sides by Bagmati river.` },
@@ -26,21 +37,29 @@ const MainPage: FC = () => {
       { src: require('../MainPage/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
     ]
   });
+  const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
   const { images: swiperItems, loading, error } = useImages('yatra');
+  const [donationFormTitle, setdonationFormTitle] = useState('Donation');
+  const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
+ 
+  
+
 
   return (
     <>
       <Header />
       <div className={styles.page}>
-        <FullScreenVideo mainTitle={mainTitle} />
+        <FullScreenVideo mainTitle={mainTitle} videoSrc={mainPageVideoSrc} />
         <Title mainTitle={galleryTitle} />
-        <Gallery items={gallery.items} />
+        <Gallery items={galleryItems.items} />
+        <Title mainTitle={galleryWithCardTitle} />
+        <GalleryWithCards items={galleryWithCardsItems.items} />
         <Title mainTitle={swiperTitle} extended />
         {loading ? (
-          <div>Загрузка изображений...</div>
+          <div>Downloading...</div>
         ) : error ? (
           <div>
-            <p>Произошла ошибка при загрузке изображений для свайпера.</p>
+            <p>Downloading Error</p>
             <Swiper properties={[]} />
           </div>
         ) : (
