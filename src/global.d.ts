@@ -53,3 +53,7 @@ interface Window {
   dataLayer: any[];
   gtag: (...args: any[]) => void;
 }
+
+declare module 'react-slick';
+
+declare module 'react'; 

@@ -1,25 +1,49 @@
-.reviewContainer {
-  display: flex;
-  position: relative;
-  width: 100%;
-
-  @media (max-width: 991px) {
+.sliderContainer {
+    position: relative;
     width: 100%;
-    overflow: visible;
-    gap: 2px;
+    margin: 0 auto;
+  
+    @media (min-width: 992px) {
+      max-width: 90%;
+    }
+  
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
   }
+  
 
-  @media (min-width: 992px) {
+  .slider {
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  
+  .image {
     width: 100%;
-    margin-left: 150px;
-    overflow: visible;
-    gap: 4px;
+    height: auto;
   }
-}
-
-.slideWrapper {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-  align-items: center;
-}
+  
