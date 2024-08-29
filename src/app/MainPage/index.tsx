@@ -31,18 +31,18 @@ const MainPage: FC = () => {
   const [galleryWithCardTitle, setGalleryWithCardTitle] = useState('Siddhachal Mrigasthali Ashram');
   const [galleryWithCardsItems, setGalleryWithCardsItems] = useState({
     items: [
-      { src: require('../MainPage/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
-      { src: require('../MainPage/assets/images/m26.png').default, title: 'Gorakshya Peeth Mrigasthali', subtitle: `is located inbetween Pashupatinath at North, Guheshwori at south and Gauri-Ghat at West. It is surrounded at its three sides by Bagmati river.` },
-      { src: require('../MainPage/assets/images/Gorakh-1.webp').default, title: 'Guru Gorakhnath', subtitle: ' is the incarnation of lord Shiva. He is also known as Shiva Gorakshya. He is the Yoga form of Lord Shiva.' },
-      { src: require('../MainPage/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
+      { src: require('../../../public/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
+      { src: require('../../../public/assets/images/m26.png').default, title: 'Gorakshya Peeth Mrigasthali', subtitle: `is located inbetween Pashupatinath at North, Guheshwori at south and Gauri-Ghat at West. It is surrounded at its three sides by Bagmati river.` },
+      { src: require('../../../public/assets/images/Gorakh-1.webp').default, title: 'Guru Gorakhnath', subtitle: ' is the incarnation of lord Shiva. He is also known as Shiva Gorakshya. He is the Yoga form of Lord Shiva.' },
+      { src: require('../../../public/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
     ]
   });
   const [swiperTitle, setSwiperTitle] = useState('Yatra 2024');
-  const { images: swiperItems, loading, error } = useImages('yatra');
+  const { images: swiperItemsYatra, loading: loadingYatra, error: errorYatra } = useImages('yatra');
+  const [swiperTitle1, setSwiperTitle1] = useState('Gorakshanath');
+  const { images: swiperItemsGorakshanath, loading: loadingGorakshanath, error: errorGorakshanath } = useImages('Gorakshanath');
   const [donationFormTitle, setdonationFormTitle] = useState('Donation');
   const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
- 
-  
 
 
   return (
@@ -50,21 +50,15 @@ const MainPage: FC = () => {
       <Header />
       <div className={styles.page}>
         <FullScreenVideo mainTitle={mainTitle} videoSrc={mainPageVideoSrc} />
-        <Title mainTitle={galleryTitle} />
-        <Gallery items={galleryItems.items} />
         <Title mainTitle={galleryWithCardTitle} />
         <GalleryWithCards items={galleryWithCardsItems.items} />
-        <Title mainTitle={swiperTitle} extended />
-        {loading ? (
-          <div>Downloading...</div>
-        ) : error ? (
-          <div>
-            <p>Downloading Error</p>
-            <Swiper properties={[]} />
-          </div>
-        ) : (
-          <Swiper properties={swiperItems} />
-        )}
+        
+        <Title mainTitle={swiperTitle} />
+        <Swiper properties={swiperItemsYatra} />
+        
+        <Title mainTitle={swiperTitle1} />
+        <Swiper properties={swiperItemsGorakshanath} />
+
         <Title
           mainTitle={donationFormTitle}
           subtitle={donationFormSubtitle}
