@@ -14,7 +14,7 @@ const Header: React.FC = () => {
       <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <ul>
           <li><a href="/">Mrigasthali</a></li>
-          <li><a href="#hanuman-dhoka">Hanuman Dhoka</a></li>
+          <li><a href="/guruMaharaj">Guru Maharaj</a></li>
         </ul>
       </nav>
       <div className={styles.burgerMenu} onClick={toggleMenu}>

@@ -31,6 +31,6 @@
     ".next/types/**/*.ts",
     "src/global.d.ts",
     "custom.d.ts"
-  ],
+, "src/app/guruMaharaj"  ],
   "exclude": ["node_modules"]
 }
