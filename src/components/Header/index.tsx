@@ -10,7 +10,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>Logo</div>
+      <div className={styles.logo}>Nath Sampradaya</div>
       <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <ul>
           <li><a href="/">Mrigasthali</a></li>

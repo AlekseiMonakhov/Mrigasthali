@@ -13,13 +13,13 @@ const Swiper: FC<Props> = ({ properties }) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings: Settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
-    arrows: false, // Отключаем стандартные стрелки
+    arrows: false, 
   };
 
   const nextSlide = () => {
@@ -41,7 +41,7 @@ const Swiper: FC<Props> = ({ properties }) => {
               src={property.src}
               alt={property.title}
               loading="lazy"
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: '100%', height:'100%' }}
             />
           </div>
         ))}

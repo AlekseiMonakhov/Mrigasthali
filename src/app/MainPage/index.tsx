@@ -11,23 +11,11 @@ import BankQR from '../../../public/assets/qr/bank-qr.jpg';
 import { useImages } from '../../hooks/useImages';
 
 import '../globals.scss'; 
-import Gallery from '@/components/Gallery ';
 
 const MainPage: FC = () => {
   const [mainTitle, setMainTitle] = useState('MRIGASTHALI');
   
-  const [mainPageVideoSrc, setMainPageVideoSrc] = useState('/assets/videos/video-back.mp4');
-  const [galleryTitle, setGalleryTitle] = useState('Om Shiv Gorakh');
-  const [galleryItems, setGalleryItems] = useState ({
-    items: [
-      { src: require('../../../public/assets/Gorakshanath/FB_IMG_17221779561109411.jpg').default},
-      { src: require('../../../public/assets/Gorakshanath/IMG_0006.jpg').default},
-      { src: require('../../../public/assets/Gorakshanath/FB_IMG_17216324868483889.jpg').default},
-     
-     
-    ]
-  })
- 
+  const [mainPageVideoSrc, setMainPageVideoSrc] = useState('/assets/videos/video-back.mp4'); 
   const [galleryWithCardTitle, setGalleryWithCardTitle] = useState('Siddhachal Mrigasthali Ashram');
   const [galleryWithCardsItems, setGalleryWithCardsItems] = useState({
     items: [
@@ -41,6 +29,8 @@ const MainPage: FC = () => {
   const { images: swiperItemsYatra, loading: loadingYatra, error: errorYatra } = useImages('yatra');
   const [swiperTitle1, setSwiperTitle1] = useState('Gorakshanath');
   const { images: swiperItemsGorakshanath, loading: loadingGorakshanath, error: errorGorakshanath } = useImages('Gorakshanath');
+  const [swiperTitle2, setSwiperTitle2] = useState('gorakh');
+  const { images: swiperItemGorakh, loading: loadingGorakh, error: errorGorakh } = useImages('gorakh');
   const [donationFormTitle, setdonationFormTitle] = useState('Donation');
   const [donationFormSubtitle, setdonationFormSubtitle] = useState('Donate to the cause of the Siddhachal Mrigasthali ashram');
 
@@ -52,12 +42,14 @@ const MainPage: FC = () => {
         <FullScreenVideo mainTitle={mainTitle} videoSrc={mainPageVideoSrc} />
         <Title mainTitle={galleryWithCardTitle} />
         <GalleryWithCards items={galleryWithCardsItems.items} />
-        
+
+        <Title mainTitle={swiperTitle1} />
+        <Swiper properties={swiperItemsGorakshanath} />
+        <Swiper properties={swiperItemGorakh} />
         <Title mainTitle={swiperTitle} />
         <Swiper properties={swiperItemsYatra} />
         
-        <Title mainTitle={swiperTitle1} />
-        <Swiper properties={swiperItemsGorakshanath} />
+        
 
         <Title
           mainTitle={donationFormTitle}
@@ -66,7 +58,7 @@ const MainPage: FC = () => {
           wide
         />
         <div className={styles.donation}>
-          <Image src={BankQR} alt="Donation" width={300} height={350} />
+          <Image src={BankQR} alt="Donation" width={200} height={250} />
         </div>
       </div>
       <Footer />
