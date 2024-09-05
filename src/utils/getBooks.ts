@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
 export interface BookInfo {
@@ -10,15 +10,17 @@ export async function getBooks(): Promise<BookInfo[]> {
   const booksDirectory = path.join(process.cwd(), 'public', 'assets', 'books');
   
   try {
-    const fileNames = fs.readdirSync(booksDirectory);
-    const books = fileNames.filter(fileName => fileName.endsWith('.pdf')).map(fileName => ({
-      name: fileName,
-      path: `/assets/books/${fileName}`
-    }));
+    const fileNames = await fs.readdir(booksDirectory);
+    const books = fileNames
+      .filter(fileName => fileName.endsWith('.pdf'))
+      .map(fileName => ({
+        name: fileName,
+        path: `/assets/books/${fileName}`
+      }));
     
     return books;
   } catch (error) {
-    console.error('Unable to read books directory', error);
+    console.error('Не удалось прочитать директорию с книгами', error);
     return [];
   }
 }
