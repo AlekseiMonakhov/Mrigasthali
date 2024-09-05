@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 
 const ITEMS_PER_PAGE = 20;
@@ -15,14 +15,39 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const directory = path.join(process.cwd(), 'public', 'assets', folder);
   
   try {
-    const files = await fs.readdir(directory);
-    const imageFiles = files.filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
+    const imageFiles: string[] = [];
+    let currentPage = 1;
+    let filesProcessed = 0;
+
+    const processFiles = () => {
+      return new Promise<void>((resolve, reject) => {
+        const stream = fs.readdirSync(directory, { withFileTypes: true });
+        
+        for (const dirent of stream) {
+          if (dirent.isFile() && /\.(jpg|jpeg|png|gif)$/i.test(dirent.name)) {
+            filesProcessed++;
+            
+            if (currentPage === pageNumber) {
+              imageFiles.push(dirent.name);
+              
+              if (imageFiles.length === ITEMS_PER_PAGE) {
+                break;
+              }
+            }
+            
+            if (filesProcessed % ITEMS_PER_PAGE === 0) {
+              currentPage++;
+            }
+          }
+        }
+        
+        resolve();
+      });
+    };
+
+    await processFiles();
     
-    const startIndex = (pageNumber - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
-    const paginatedFiles = imageFiles.slice(startIndex, endIndex);
-    
-    const items = paginatedFiles.map(fileName => ({
+    const items = imageFiles.map(fileName => ({
       src: `/assets/${folder}/${fileName}`,
       alt: fileName,
       title: fileName.replace(/\.[^/.]+$/, "").replace(/_/g, ' ')
@@ -30,10 +55,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({
       items,
-      totalPages: Math.ceil(imageFiles.length / ITEMS_PER_PAGE),
+      totalPages: Math.ceil(filesProcessed / ITEMS_PER_PAGE),
       currentPage: pageNumber
     });
   } catch (error) {
+    console.error('Error reading directory:', error);
     res.status(500).json({ error: 'Unable to read directory' });
   }
 }
