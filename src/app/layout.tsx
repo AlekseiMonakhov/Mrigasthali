@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Mrigasthali",
-  description: "Gorakhnath math",
+  description: "Nath Sampradaya Siddhachal Mrigasthali Ashram",
 };
 
 export default function RootLayout({

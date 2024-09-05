@@ -35,7 +35,11 @@
 
 .socialIcons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+
+  @media (max-width: 991px) {
+    margin-left: 20px;
+  }
 }
 
 .footerBottom {

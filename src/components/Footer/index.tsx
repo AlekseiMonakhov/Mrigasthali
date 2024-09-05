@@ -11,6 +11,7 @@ const Footer: React.FC = () => {
           <h3>Contact</h3>
           <p>Email: siddhachal.mrigasthali@gmail.com</p>
           <p>Phone: +977 985-1027163</p>
+          <p>Mrigasthali, Pashupatinath, Kathmandu, Nepal</p>
         </div>
         <div className={styles.footerSection}>
           <h3>Social media</h3>
