@@ -39,7 +39,6 @@ const MainPage: FC = () => {
   const { images: swiperSadhu, loadMore: loadMoreSadhu, hasMore: hasMoreSadhu } = useImages('sadhu');
   const { images: swiperTexts, loadMore: loadMoreTexts, hasMore: hasMoreTexts } = useImages('texts');
   const { images: swiperChakras, loadMore: loadMoreChakras, hasMore: hasMoreChakras } = useImages('chakras');
-  const { images: swiperVarios, loadMore: loadMoreVarios, hasMore: hasMoreVarios } = useImages('images_with_text');
 
   return (
     <>
