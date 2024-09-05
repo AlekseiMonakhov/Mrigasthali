@@ -53,11 +53,11 @@ const MainPage: FC = () => {
 
         <Title mainTitle={pageData.swiperTitles.gorakh} />
         <Swiper properties={swiperGorakh} />
-        <Title mainTitle='Sadhus' />
+        <Title mainTitle='Sadhu' />
         <Swiper properties={swiperSadhu} />
-        <Title mainTitle='Guru Naraharinath Maharaj' />
+        <Title mainTitle='Guru Yogi Naraharinath Maharaj' />
         <Swiper properties={swiperNaraharinath} />
-        
+
         <Swiper properties={swiperTexts} />
         <Swiper properties={swiperChakras} />
         <Swiper properties={swiperVarios} />

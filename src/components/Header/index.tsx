@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 
@@ -15,6 +16,7 @@ const Header: React.FC = () => {
         <ul>
           <li><a href="/">Mrigasthali</a></li>
           <li><a href="/guruMaharaj">Guru Maharaj</a></li>
+          <li><a href="/library">Library</a></li>
         </ul>
       </nav>
       <div className={styles.burgerMenu} onClick={toggleMenu}>
