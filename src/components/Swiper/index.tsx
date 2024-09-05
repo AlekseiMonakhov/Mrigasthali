@@ -36,12 +36,12 @@ const Swiper: FC<Props> = ({ properties }) => {
       
       <Slider ref={sliderRef} {...settings} className={styles.slider}>
         {properties.map((property: IProperty) => (
-          <div key={property.src}>
+          <div key={property.src} className={styles.slideWrapper}>
             <img
               src={property.src}
               alt={property.title}
               loading="lazy"
-              style={{ width: '100%', height:'100%' }}
+              className={styles.slideImage}
             />
           </div>
         ))}
