@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-const MAX_FILES = 100; // Ограничение количества файлов
+const MAX_FILES = 100;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { folder } = req.query;
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           const item = {
             src: `/assets/${folder}/${fileName}`,
             alt: `Image ${count + 1}`,
-            title: fileName.replace('.png', '').replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+            title: fileName.replace('.png', '').replace('_', ' ')
           };
           
           if (count > 0) res.write(',');
