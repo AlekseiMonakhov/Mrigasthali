@@ -23,9 +23,8 @@ const pageData = {
     { src: require('../../../public/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
   ],
   swiperTitles: {
-    yatra: 'Yatra 2024',
-    gorakshanath: 'Gorakshanath',
-    gorakh: 'gorakh',
+    yatra: 'PatradevtaYatra 2024',
+    gorakh: 'Gorakshanath',
   },
   donationForm: {
     title: 'Donation',
@@ -34,9 +33,15 @@ const pageData = {
 };
 
 const MainPage: FC = () => {
-  const { images: swiperItemsYatra } = useImages('yatra');
-  const { images: swiperItemsGorakshanath } = useImages('Gorakshanath');
-  const { images: swiperItemGorakh } = useImages('gorakh');
+  const { images: swiperYatra } = useImages('yatra');
+  const { images: swiperGorakh } = useImages('gorakh');
+  const { images: swiperSadhu } = useImages('sadhu');
+  const { images: swiperNaraharinath } = useImages('Naraharinath');
+  const { images: swiperTexts } = useImages('texts');
+  const { images: swiperChakras } = useImages('chakras');
+  const { images: swiperVarios } = useImages('images_with_text');
+
+
 
   return (
     <>
@@ -46,11 +51,20 @@ const MainPage: FC = () => {
         <Title mainTitle={pageData.galleryWithCardTitle} />
         <GalleryWithCards items={pageData.galleryWithCardsItems} />
 
-        <Title mainTitle={pageData.swiperTitles.gorakshanath} />
-        <Swiper properties={swiperItemsGorakshanath} />
-        <Swiper properties={swiperItemGorakh} />
+        <Title mainTitle={pageData.swiperTitles.gorakh} />
+        <Swiper properties={swiperGorakh} />
+        <Title mainTitle='Sadhus' />
+        <Swiper properties={swiperSadhu} />
+        <Title mainTitle='Guru Naraharinath Maharaj' />
+        <Swiper properties={swiperNaraharinath} />
+        
+        <Swiper properties={swiperTexts} />
+        <Swiper properties={swiperChakras} />
+        <Swiper properties={swiperVarios} />
+
         <Title mainTitle={pageData.swiperTitles.yatra} />
-        <Swiper properties={swiperItemsYatra} />
+        <Swiper properties={swiperYatra} />
+
 
         <Title
           mainTitle={pageData.donationForm.title}
