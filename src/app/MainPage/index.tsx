@@ -36,7 +36,6 @@ const MainPage: FC = () => {
   const { images: swiperYatra } = useImages('yatra');
   const { images: swiperGorakh } = useImages('gorakh');
   const { images: swiperSadhu } = useImages('sadhu');
-  const { images: swiperNaraharinath } = useImages('Naraharinath');
   const { images: swiperTexts } = useImages('texts');
   const { images: swiperChakras } = useImages('chakras');
   const { images: swiperVarios } = useImages('images_with_text');
@@ -55,8 +54,6 @@ const MainPage: FC = () => {
         <Swiper properties={swiperGorakh} />
         <Title mainTitle='Sadhu' />
         <Swiper properties={swiperSadhu} />
-        <Title mainTitle='Guru Yogi Naraharinath Maharaj' />
-        <Swiper properties={swiperNaraharinath} />
 
         <Swiper properties={swiperTexts} />
         <Swiper properties={swiperChakras} />
