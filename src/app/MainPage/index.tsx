@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
-import styles from './styles.module.scss';
-import FullScreenVideo from '../../components/FullScreenVideo';
-import GalleryWithCards from '../../components/GalleryWithCards';
-import Title from '../../components/Title';
-import Swiper from '../../components/Swiper';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import BankQR from '../../../public/assets/qr/bank-qr.jpg';
+import styles from './styles.module.scss';
 import { useImages } from '../../hooks/useImages';
-
 import '../globals.scss';
+import BankQR from '../../../public/assets/qr/bank-qr.jpg';
+
+const FullScreenVideo = dynamic(() => import('../../components/FullScreenVideo'));
+const GalleryWithCards = dynamic(() => import('../../components/GalleryWithCards'));
+const Title = dynamic(() => import('../../components/Title'));
+const Swiper = dynamic(() => import('../../components/Swiper'));
+const Header = dynamic(() => import('../../components/Header'));
+const Footer = dynamic(() => import('../../components/Footer'));
 
 const pageData = {
   mainTitle: 'MRIGASTHALI',

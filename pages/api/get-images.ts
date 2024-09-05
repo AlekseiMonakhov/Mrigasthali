@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { promises as fs } from 'fs';
 import path from 'path';
-import fs from 'fs';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { folder } = req.query;
   
   if (typeof folder !== 'string') {
@@ -12,12 +12,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const directory = path.join(process.cwd(), 'public', 'assets', folder);
   
   try {
-    const fileNames = fs.readdirSync(directory);
+    const fileNames = await fs.readdir(directory);
     
-    const items = fileNames.map((fileName, index) => ({
+    const items = fileNames.filter(fileName => /\.(jpg|jpeg|png|gif)$/i.test(fileName)).map((fileName, index) => ({
       src: `/assets/${folder}/${fileName}`,
       alt: `Image ${index + 1}`,
-      title: 'Yatra 2024'
+      title: fileName.replace('.png', '').replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
     }));
 
     res.status(200).json(items);

@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import dynamic from 'next/dynamic';
 import { BookInfo } from '@/utils/getBooks';
 
-const PDFViewer = dynamic(() => import('../PDFViewer'), { ssr: false });
+const PDFViewer = dynamic(() => import('../PDFViewer'), { ssr: false, loading: () => <p>Loading...</p> });
 
 interface LibraryComponentProps {
   initialBooks: BookInfo[];
