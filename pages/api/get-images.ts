@@ -1,55 +1,39 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
-const MAX_FILES = 100;
+const ITEMS_PER_PAGE = 20;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { folder } = req.query;
+  const { folder, page = '1' } = req.query;
   
   if (typeof folder !== 'string') {
     return res.status(400).json({ error: 'Folder parameter is required' });
   }
 
+  const pageNumber = parseInt(page as string, 10);
   const directory = path.join(process.cwd(), 'public', 'assets', folder);
   
-  res.writeHead(200, {
-    'Content-Type': 'application/json',
-    'Transfer-Encoding': 'chunked',
-  });
-
-  let count = 0;
-  res.write('[');
-
   try {
-    const stream = fs.createReadStream(directory, { encoding: 'utf8', highWaterMark: 64 * 1024 });
+    const files = await fs.readdir(directory);
+    const imageFiles = files.filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
+    
+    const startIndex = (pageNumber - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const paginatedFiles = imageFiles.slice(startIndex, endIndex);
+    
+    const items = paginatedFiles.map(fileName => ({
+      src: `/assets/${folder}/${fileName}`,
+      alt: fileName,
+      title: fileName.replace(/\.[^/.]+$/, "").replace(/_/g, ' ')
+    }));
 
-    for await (const chunk of stream) {
-      const fileNames = chunk.split('\n').filter(Boolean);
-      
-      for (const fileName of fileNames) {
-        if (/\.(jpg|jpeg|png|gif)$/i.test(fileName)) {
-          const item = {
-            src: `/assets/${folder}/${fileName}`,
-            alt: `Image ${count + 1}`,
-            title: fileName.replace('.png', '').replace('_', ' ')
-          };
-          
-          if (count > 0) res.write(',');
-          res.write(JSON.stringify(item));
-          
-          count++;
-          if (count >= MAX_FILES) break;
-        }
-      }
-      
-      if (count >= MAX_FILES) break;
-    }
-
-    res.write(']');
-    res.end();
+    res.status(200).json({
+      items,
+      totalPages: Math.ceil(imageFiles.length / ITEMS_PER_PAGE),
+      currentPage: pageNumber
+    });
   } catch (error) {
-    res.write(']}');
-    res.end();
+    res.status(500).json({ error: 'Unable to read directory' });
   }
 }

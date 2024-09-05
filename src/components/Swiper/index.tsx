@@ -6,10 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 interface Props {
-  properties: IProperty[]; 
+  properties: IProperty[];
+  loadMore?: () => void;
+  hasMore?: boolean;
 }
 
-const Swiper: FC<Props> = ({ properties }) => {
+const Swiper: FC<Props> = ({ properties, loadMore, hasMore }) => {
   const sliderRef = useRef<Slider>(null);
 
   const settings: Settings = {
@@ -20,6 +22,11 @@ const Swiper: FC<Props> = ({ properties }) => {
     slidesToScroll: 1,
     adaptiveHeight: true,
     arrows: false, 
+    afterChange: (currentSlide) => {
+      if (hasMore && loadMore && currentSlide === properties.length - 1) {
+        loadMore();
+      }
+    },
   };
 
   const nextSlide = () => {

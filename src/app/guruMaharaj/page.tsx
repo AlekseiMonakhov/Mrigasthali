@@ -10,13 +10,13 @@ import { useImages } from '@/hooks/useImages';
 
 
 const GuruMaharajPage: FC = () => {
-  const { images: swiperNaraharinath } = useImages('Naraharinath');
+  const { images: swiperNaraharinath, loadMore, hasMore } = useImages('Naraharinath');
   return (
     <>
       <Header />
       <div className={styles.container}>
       <Title mainTitle='Guru Yogi Naraharinath Maharaj' />
-      <Swiper properties={swiperNaraharinath} />
+      <Swiper properties={swiperNaraharinath} loadMore={loadMore} hasMore={hasMore} />
       </div>
       <Footer />
     </>

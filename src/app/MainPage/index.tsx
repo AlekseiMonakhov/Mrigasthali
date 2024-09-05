@@ -34,14 +34,12 @@ const pageData = {
 };
 
 const MainPage: FC = () => {
-  const { images: swiperYatra } = useImages('yatra');
-  const { images: swiperGorakh } = useImages('gorakh');
-  const { images: swiperSadhu } = useImages('sadhu');
-  const { images: swiperTexts } = useImages('texts');
-  const { images: swiperChakras } = useImages('chakras');
-  const { images: swiperVarios } = useImages('images_with_text');
-
-
+  const { images: swiperYatra, loadMore: loadMoreYatra, hasMore: hasMoreYatra } = useImages('yatra');
+  const { images: swiperGorakh, loadMore: loadMoreGorakh, hasMore: hasMoreGorakh } = useImages('gorakh');
+  const { images: swiperSadhu, loadMore: loadMoreSadhu, hasMore: hasMoreSadhu } = useImages('sadhu');
+  const { images: swiperTexts, loadMore: loadMoreTexts, hasMore: hasMoreTexts } = useImages('texts');
+  const { images: swiperChakras, loadMore: loadMoreChakras, hasMore: hasMoreChakras } = useImages('chakras');
+  const { images: swiperVarios, loadMore: loadMoreVarios, hasMore: hasMoreVarios } = useImages('images_with_text');
 
   return (
     <>
@@ -52,17 +50,16 @@ const MainPage: FC = () => {
         <GalleryWithCards items={pageData.galleryWithCardsItems} />
 
         <Title mainTitle={pageData.swiperTitles.gorakh} />
-        <Swiper properties={swiperGorakh} />
+        <Swiper properties={swiperGorakh} loadMore={loadMoreGorakh} hasMore={hasMoreGorakh} />
         <Title mainTitle='Sadhu' />
-        <Swiper properties={swiperSadhu} />
+        <Swiper properties={swiperSadhu} loadMore={loadMoreSadhu} hasMore={hasMoreSadhu} />
 
-        <Swiper properties={swiperTexts} />
-        <Swiper properties={swiperChakras} />
-        <Swiper properties={swiperVarios} />
+        <Swiper properties={swiperTexts} loadMore={loadMoreTexts} hasMore={hasMoreTexts} />
+        <Swiper properties={swiperChakras} loadMore={loadMoreChakras} hasMore={hasMoreChakras} />
+        <Swiper properties={swiperVarios} loadMore={loadMoreVarios} hasMore={hasMoreVarios} />
 
         <Title mainTitle={pageData.swiperTitles.yatra} />
-        <Swiper properties={swiperYatra} />
-
+        <Swiper properties={swiperYatra} loadMore={loadMoreYatra} hasMore={hasMoreYatra} />
 
         <Title
           mainTitle={pageData.donationForm.title}
