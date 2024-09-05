@@ -56,7 +56,6 @@ const MainPage: FC = () => {
 
         <Swiper properties={swiperTexts} loadMore={loadMoreTexts} hasMore={hasMoreTexts} />
         <Swiper properties={swiperChakras} loadMore={loadMoreChakras} hasMore={hasMoreChakras} />
-        <Swiper properties={swiperVarios} loadMore={loadMoreVarios} hasMore={hasMoreVarios} />
 
         <Title mainTitle={pageData.swiperTitles.yatra} />
         <Swiper properties={swiperYatra} loadMore={loadMoreYatra} hasMore={hasMoreYatra} />
