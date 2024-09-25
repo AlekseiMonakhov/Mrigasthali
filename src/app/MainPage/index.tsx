@@ -28,8 +28,8 @@ const pageData = {
     gorakh: 'Gorakshanath',
   },
   donationForm: {
-    title: 'Donation',
-    subtitle: 'Donate to the cause of the Siddhachal Mrigasthali ashram',
+    title: '',
+    subtitle: 'You can make donations for the needs of our ashram',
   },
 };
 
