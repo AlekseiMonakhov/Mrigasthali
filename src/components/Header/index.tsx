@@ -16,6 +16,7 @@ const Header: React.FC = () => {
         <ul>
           <li><a href="/">Mrigasthali</a></li>
           <li><a href="/guruMaharaj">Yogi Naraharinath</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           <li><a href="/library">Library</a></li>
         </ul>
       </nav>

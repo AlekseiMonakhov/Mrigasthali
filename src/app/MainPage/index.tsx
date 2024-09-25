@@ -34,11 +34,7 @@ const pageData = {
 };
 
 const MainPage: FC = () => {
-  const { images: swiperYatra, loadMore: loadMoreYatra, hasMore: hasMoreYatra } = useImages('yatra');
-  const { images: swiperGorakh, loadMore: loadMoreGorakh, hasMore: hasMoreGorakh } = useImages('gorakh');
-  const { images: swiperSadhu, loadMore: loadMoreSadhu, hasMore: hasMoreSadhu } = useImages('sadhu');
-  const { images: swiperChakras, loadMore: loadMoreChakras, hasMore: hasMoreChakras } = useImages('chakras');
-
+ 
   return (
     <>
       <Header />
@@ -46,17 +42,6 @@ const MainPage: FC = () => {
         <FullScreenVideo mainTitle={pageData.mainTitle} videoSrc={pageData.mainPageVideoSrc} />
         <Title mainTitle={pageData.galleryWithCardTitle} />
         <GalleryWithCards items={pageData.galleryWithCardsItems} />
-
-        <Title mainTitle={pageData.swiperTitles.gorakh} />
-        <Swiper properties={swiperGorakh} loadMore={loadMoreGorakh} hasMore={hasMoreGorakh} />
-        <Title mainTitle='Sadhu' />
-        <Swiper properties={swiperSadhu} loadMore={loadMoreSadhu} hasMore={hasMoreSadhu} />
-
-        <Title mainTitle={pageData.swiperTitles.yatra} />
-        <Swiper properties={swiperYatra} loadMore={loadMoreYatra} hasMore={hasMoreYatra} />
-       
-        <Swiper properties={swiperChakras} loadMore={loadMoreChakras} hasMore={hasMoreChakras} />
-
 
         <Title
           mainTitle={pageData.donationForm.title}
