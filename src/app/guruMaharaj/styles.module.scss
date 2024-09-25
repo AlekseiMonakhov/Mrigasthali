@@ -13,9 +13,9 @@
 }
 
 .text {
-  font-size: 1rem;
-  line-height: 1.6;
-  font-family: 'Tangak', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-family: 'Roboto', sans-serif;
   font-style: italic;
   color: #1b1a1a;
   text-align: justify;
@@ -50,11 +50,14 @@
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 
   @media (min-width: 768px) {
     max-width: calc(50% - 0.5rem);
+    &:hover {
+      transform: scale(2.5);
+    }
   }
 }
 
