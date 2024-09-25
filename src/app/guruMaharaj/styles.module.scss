@@ -1,11 +1,11 @@
 .container {
   margin-top: 30px;
+  padding: 0 1rem;
 }
 
 .textContainer {
   max-width: 100%;
   margin: 2rem auto;
-  padding: 0 1rem;
 
   @media (min-width: 992px) {
     max-width: 80%;
@@ -13,16 +13,59 @@
 }
 
 .text {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  font-family: 'Tangak';
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: 'Tangak', sans-serif;
   font-style: italic;
   color: #1b1a1a;
   text-align: justify;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
 }
 
-.paragraph {
-  margin-bottom: 1.5rem;
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+
+  @media (min-width: 768px) {
+    float: right;
+    max-width: 50%;
+    margin: 0 0 1rem 1rem;
+  }
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (min-width: 768px) {
+    max-width: calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .imageContainer {
+    float: none;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+
+  .text {
+    clear: both;
+  }
 }

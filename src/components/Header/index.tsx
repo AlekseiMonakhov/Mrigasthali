@@ -15,7 +15,7 @@ const Header: React.FC = () => {
       <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <ul>
           <li><a href="/">Mrigasthali</a></li>
-          <li><a href="/guruMaharaj">Guru Maharaj</a></li>
+          <li><a href="/guruMaharaj">Yogi Naraharinath</a></li>
           <li><a href="/library">Library</a></li>
         </ul>
       </nav>

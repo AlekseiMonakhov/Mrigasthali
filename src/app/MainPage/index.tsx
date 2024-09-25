@@ -37,7 +37,6 @@ const MainPage: FC = () => {
   const { images: swiperYatra, loadMore: loadMoreYatra, hasMore: hasMoreYatra } = useImages('yatra');
   const { images: swiperGorakh, loadMore: loadMoreGorakh, hasMore: hasMoreGorakh } = useImages('gorakh');
   const { images: swiperSadhu, loadMore: loadMoreSadhu, hasMore: hasMoreSadhu } = useImages('sadhu');
-  
   const { images: swiperChakras, loadMore: loadMoreChakras, hasMore: hasMoreChakras } = useImages('chakras');
 
   return (
