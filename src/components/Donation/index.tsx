@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 import BankQR from '../../../public/assets/qr/bank-qr.jpg';
 import EsewaQR from '../../../public/assets/qr/esewa-qr.jpg';
 import Title from '../Title';

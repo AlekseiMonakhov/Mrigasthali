@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerSection}>
-          <h3>Contact</h3>
-          <p>Email: siddhachal.mrigasthali@gmail.com</p>
-          <p>Phone: +977 985-1027163</p>
-          <p>Mrigasthali, Pashupatinath, Kathmandu, Nepal</p>
+          <h3>Contacts</h3>
+          <p className={styles.contact}>Phone: +977 985-1027163</p>
+          <p className={styles.contact}>siddhachal.mrigasthali@gmail.com</p>
+          <p className={styles.contact}>Mrigasthali, Pashupatinath, Kathmandu</p>
         </div>
         <div className={styles.footerSection}>
           <h3>Social media</h3>
