@@ -4,7 +4,6 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import { useImages } from '../../hooks/useImages';
 import '../globals.scss';
-import BankQR from '../../../public/assets/qr/bank-qr.jpg';
 
 const FullScreenVideo = dynamic(() => import('../../components/FullScreenVideo'));
 const GalleryWithCards = dynamic(() => import('../../components/GalleryWithCards'));
@@ -12,6 +11,7 @@ const Title = dynamic(() => import('../../components/Title'));
 const Swiper = dynamic(() => import('../../components/Swiper'));
 const Header = dynamic(() => import('../../components/Header'));
 const Footer = dynamic(() => import('../../components/Footer'));
+const Donation = dynamic(() =>  import('../../components/Donation'))
 
 const pageData = {
   mainTitle: 'MRIGASTHALI',
@@ -27,10 +27,6 @@ const pageData = {
     yatra: 'PatradevtaYatra 2024',
     gorakh: 'Gorakshanath',
   },
-  donationForm: {
-    title: '',
-    subtitle: 'You can make donations for the needs of our ashram',
-  },
 };
 
 const MainPage: FC = () => {
@@ -42,16 +38,7 @@ const MainPage: FC = () => {
         <FullScreenVideo mainTitle={pageData.mainTitle} videoSrc={pageData.mainPageVideoSrc} />
         <Title mainTitle={pageData.galleryWithCardTitle} />
         <GalleryWithCards items={pageData.galleryWithCardsItems} />
-
-        <Title
-          mainTitle={pageData.donationForm.title}
-          subtitle={pageData.donationForm.subtitle}
-          extended
-          wide
-        />
-        <div className={styles.donation}>
-          <Image src={BankQR} alt="Donation" width={200} height={250} />
-        </div>
+        <Donation /> 
       </div>
       <Footer />
     </>
