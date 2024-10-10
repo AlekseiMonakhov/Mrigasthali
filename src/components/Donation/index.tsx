@@ -6,7 +6,7 @@ import EsewaQR from '../../../public/assets/qr/esewa-qr.jpg';
 import Title from '../Title';
 
 const Donation: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>('Nepali rupees. Bank transfer');
+  const [selectedOption, setSelectedOption] = useState<string>('Nepali rupees. Esewa wallet');
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);

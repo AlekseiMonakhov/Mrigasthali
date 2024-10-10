@@ -21,9 +21,7 @@ const Header: React.FC = () => {
         </ul>
       </nav>
       <div className={styles.burgerMenu} onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
+        Menu
       </div>
 
       <div className={styles.logo}>Nath Sampradaya</div>
