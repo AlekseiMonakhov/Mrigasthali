@@ -39,11 +39,11 @@ export function useImages(folder: string) {
     fetchImages();
   }, [folder, currentPage]);
 
-  const loadMore = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prevPage => prevPage + 1);
-    }
-  };
+  // const loadMore = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(prevPage => prevPage + 1);
+  //   }
+  // };
 
-  return { images, loading, error, loadMore, hasMore: currentPage < totalPages };
+  return { images, loading, error };
 }

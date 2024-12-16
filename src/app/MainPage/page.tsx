@@ -1,14 +1,11 @@
 import React, { FC } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import styles from './styles.module.scss';
-import { useImages } from '../../hooks/useImages';
 import '../globals.scss';
 
 const FullScreenVideo = dynamic(() => import('../../components/FullScreenVideo'));
 const GalleryWithCards = dynamic(() => import('../../components/GalleryWithCards'));
 const Title = dynamic(() => import('../../components/Title'));
-const Swiper = dynamic(() => import('../../components/Swiper'));
 const Header = dynamic(() => import('../../components/Header'));
 const Footer = dynamic(() => import('../../components/Footer'));
 const Donation = dynamic(() =>  import('../../components/Donation'))
@@ -23,10 +20,6 @@ const pageData = {
     { src: require('../../../public/assets/images/Gorakh-1.webp').default, title: 'Guru Gorakhnath', subtitle: 'is the incarnation of lord Shiva. He is also known as Shiva Gorakshya. He is the Yoga form of Lord Shiva.' },
     { src: require('../../../public/assets/images/m30.png').default, title: 'This is the place where Gorakshnath meditated', subtitle: 'Now there is a Gorakh Nath Temple and ashram with many Nath Yogis at this place.' },
   ],
-  swiperTitles: {
-    yatra: 'PatradevtaYatra 2024',
-    gorakh: 'Gorakshanath',
-  },
 };
 
 const MainPage: FC = () => {
