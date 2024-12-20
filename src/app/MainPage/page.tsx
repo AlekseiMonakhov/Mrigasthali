@@ -8,7 +8,9 @@ const GalleryWithCards = dynamic(() => import('../../components/GalleryWithCards
 const Title = dynamic(() => import('../../components/Title'));
 const Header = dynamic(() => import('../../components/Header'));
 const Footer = dynamic(() => import('../../components/Footer'));
-const Donation = dynamic(() =>  import('../../components/Donation'))
+const Donation = dynamic(() => import('../../components/Donation'), {
+  ssr: false
+});
 
 const pageData = {
   mainTitle: 'MRIGASTHALI',
