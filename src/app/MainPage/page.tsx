@@ -14,7 +14,7 @@ const Donation = dynamic(() => import('../../components/Donation'), {
 
 const pageData = {
   mainTitle: 'MRIGASTHALI',
-  mainPageVideoSrc: '/assets/videos/video-back.mp4',
+  mainPageVideoSrc: '/assets/videos/videoback.mp4',
   galleryWithCardTitle: 'Siddhachal Mrigasthali Ashram',
   galleryWithCardsItems: [
     { src: require('../../../public/assets/images/m5.png').default, title: 'Gorakshya Peeth Siddhachal Mrigasthali', subtitle: 'is located at the ancient place, loved by many siddhas over the time' },
