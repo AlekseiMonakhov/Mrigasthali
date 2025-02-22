@@ -47,7 +47,6 @@ export async function getBooks(): Promise<BookInfo[]> {
     
     const data: BooksResponse = await response.json();
     
-    // Проверяем наличие данных
     if (!data || !data.items) {
       console.error('Invalid response format:', data);
       return [];
