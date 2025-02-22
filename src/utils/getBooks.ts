@@ -33,7 +33,13 @@ const checkImageUrl = async (url: string): Promise<boolean> => {
 
 export async function getBooks(): Promise<BookInfo[]> {
   try {
-    const response = await fetch(addCacheBuster(`${MEDIA_SERVER_URL}/api/books`));
+    const response = await fetch(addCacheBuster(`${MEDIA_SERVER_URL}/api/books`), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache'
+      },
+    });
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,11 +47,32 @@ export async function getBooks(): Promise<BookInfo[]> {
     
     const data: BooksResponse = await response.json();
     
-    return data.items.map(book => ({
-      ...book,
-      path: `${MEDIA_SERVER_URL}${book.path}`,
-      thumbnail: book.thumbnail ? book.thumbnail : null
-    }));
+    // Проверяем наличие данных
+    if (!data || !data.items) {
+      console.error('Invalid response format:', data);
+      return [];
+    }
+
+    // Обрабатываем каждую книгу
+    return data.items.map(book => {
+      try {
+        return {
+          ...book,
+          path: `${MEDIA_SERVER_URL}${book.path}`,
+          // Проверяем, что thumbnail это строка и начинается с "data:image"
+          thumbnail: book.thumbnail && typeof book.thumbnail === 'string' && 
+                    book.thumbnail.startsWith('data:image') ? book.thumbnail : null
+        };
+      } catch (err) {
+        console.error('Error processing book:', book.name, err);
+        return {
+          name: book.name,
+          path: `${MEDIA_SERVER_URL}${book.path}`,
+          thumbnail: null,
+          error: 'Failed to process book data'
+        };
+      }
+    });
     
   } catch (error) {
     console.error('Failed to fetch books:', error);
