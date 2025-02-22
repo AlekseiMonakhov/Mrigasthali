@@ -15,7 +15,8 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ file, name, thumbnail }) => {
       height: 200, 
       backgroundColor: 'white', 
       border: '1px solid #ccc',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      position: 'relative'
     }}>
       {thumbnail ? (
         <img 
@@ -23,27 +24,37 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ file, name, thumbnail }) => {
           alt={displayName}
           onError={(e) => {
             console.error('Error loading thumbnail for:', displayName);
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            target.parentElement?.querySelector('.fallback')?.classList.remove('hidden');
           }}
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            display: 'block'
           }}
         />
-      ) : (
-        <div style={{
+      ) : null}
+      <div 
+        className="fallback"
+        style={{
           width: '100%',
           height: '100%',
-          display: 'flex',
+          display: thumbnail ? 'none' : 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           padding: '10px',
           textAlign: 'center',
-          wordBreak: 'break-word'
-        }}>
-          {displayName}
-        </div>
-      )}
+          wordBreak: 'break-word',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          backgroundColor: 'white'
+        }}
+      >
+        {displayName}
+      </div>
     </div>
   );
 };
