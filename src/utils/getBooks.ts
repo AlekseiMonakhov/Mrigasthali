@@ -4,6 +4,14 @@ import path from 'path';
 export interface BookInfo {
   name: string;
   path: string;
+  thumbnail: string | null;
+  error: string | null;
+}
+
+interface BooksResponse {
+  items: BookInfo[];
+  totalPages: number;
+  currentPage: number;
 }
 
 const MEDIA_SERVER_URL = 'http://87.228.27.211:3001';
@@ -13,36 +21,34 @@ const addCacheBuster = (url: string) => {
   return `${url}${separator}t=${new Date().getTime()}`;
 };
 
+// Добавим функцию для проверки доступности изображения
+const checkImageUrl = async (url: string): Promise<boolean> => {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
+  } catch {
+    return false;
+  }
+};
+
 export async function getBooks(): Promise<BookInfo[]> {
   try {
-    const response = await fetch(addCacheBuster(`${MEDIA_SERVER_URL}/api/books`), {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-      },
-      mode: 'cors',
-      credentials: 'same-origin'
-    });
+    const response = await fetch(addCacheBuster(`${MEDIA_SERVER_URL}/api/books`));
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    const books: BookInfo[] = await response.json();
+    const data: BooksResponse = await response.json();
     
-    return books.map(book => ({
-      name: book.name,
-      path: `${MEDIA_SERVER_URL}${book.path}`
+    return data.items.map(book => ({
+      ...book,
+      path: `${MEDIA_SERVER_URL}${book.path}`,
+      thumbnail: book.thumbnail ? book.thumbnail : null
     }));
+    
   } catch (error) {
     console.error('Failed to fetch books:', error);
-    if (error instanceof Error) {
-      console.error('Error details:', error.message);
-    }
     return [];
   }
 }

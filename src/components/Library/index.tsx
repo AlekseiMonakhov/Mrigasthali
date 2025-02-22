@@ -32,7 +32,11 @@ const LibraryComponent: React.FC<LibraryComponentProps> = ({ initialBooks }) => 
       <div className={styles.booksGrid}>
         {books.map((book, index) => (
           <div key={index} className={styles.bookItem}>
-            <PDFViewer file={book.path} name={book.name} />
+            <PDFViewer 
+              file={book.path} 
+              name={book.name} 
+              thumbnail={book.thumbnail} 
+            />
             <p>{book.name}</p>
             <button onClick={() => handleDownload(book.path)}>Download</button>
           </div>
