@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 import { BookInfo } from '@/utils/getBooks';
 import PDFViewer from '../PDFViewer';
+import Donation from '../../components/Donation';
 
 interface LibraryComponentProps {
   initialBooks: BookInfo[];
@@ -26,7 +27,7 @@ const LibraryComponent: React.FC<LibraryComponentProps> = ({ initialBooks }) => 
     return <div className={styles.libraryContainer}>Loading...</div>;
   }
 
-  return (
+  return (<>
     <div className={styles.libraryContainer}>
       <h1>Library</h1>
       <div className={styles.booksGrid}>
@@ -54,6 +55,8 @@ const LibraryComponent: React.FC<LibraryComponentProps> = ({ initialBooks }) => 
         ))}
       </div>
     </div>
+         <Donation/>
+         </>
   );
 };
 

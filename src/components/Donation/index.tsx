@@ -17,7 +17,7 @@ const Donation: React.FC = () => {
     <div className={styles.donation}>
       <Title
         mainTitle=''
-        subtitle='You can make donations for the needs of our ashram'
+        subtitle='You can download books for free or make a donation for the needs of our ashram'
         extended
         wide
       />
@@ -35,9 +35,9 @@ const Donation: React.FC = () => {
       )}
       {selectedOption === 'Russian roubles' && (
         <div className={styles.details}>
-          <h3>Перевод на карту Мир:</h3>
+          <h3>Перевод по СБП:</h3>
           <p>Банк: Россельхозбанк</p>
-          <p>Номер карты: 2200380354349391</p>
+          <p>Номер: +7 905 597-77-09</p>
           <p>Получатель: Искандер М.</p>
         </div>
       )}
