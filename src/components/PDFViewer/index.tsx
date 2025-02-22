@@ -19,8 +19,11 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ file, name, thumbnail }) => {
     }}>
       {thumbnail ? (
         <img 
-          src={`data:image/jpeg;base64,${thumbnail}`}
+          src={thumbnail}
           alt={displayName}
+          onError={(e) => {
+            console.error('Error loading thumbnail for:', displayName);
+          }}
           style={{
             width: '100%',
             height: '100%',
